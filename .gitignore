@@ -1,0 +1,40 @@
+.idea/
+*.iml
+
+# User-specific and high-churn files inside .idea/
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries/
+.idea/dataSources/
+.idea/dataSources.ids
+.idea/dataSources.xml
+.idea/sqlDataSources.xml
+.idea/dynamic.xml
+.idea/uiDesigner.xml
+.idea/gradle.xml
+.idea/libraries/
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/.gitignore
+
+# Plugin-specific or temp files
+/out/
+.idea_modules/
+atlassian-ide-plugin.xml
+*.ipr
+*.iws
+
+# System/OS files
+.DS_Store
+Thumbs.db
+
+# Python bytecode, just in case
+__pycache__/
+*.pyc
+
+# Other common unnecessary files
+*.log
+*.tmp
+*.swp
+*.bak
