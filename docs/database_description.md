@@ -51,16 +51,16 @@
 - Компания ( company ) : company_id, company_name, company_desc, registration_date
 - Пользователь ( employees ) : company_id, employee_id, employee_name, employee_email, registration_date, role
 - Клиент ( clients ) : client_id, company_id, client_name, client_email, client_phone, client_post
-- Сделка ( deal ): deal_id, client_id, company_id, deal_name, deal_desc, amount, deal_status, creation_date, close_date
+- Сделка ( deal ): deal_id, client_id, deal_name, deal_desc, amount, deal_status, creation_date, close_date
 - Товар ( product ): product_id, product_name, product_desc, product_price
 - Задача ( task ) : task_id, deal_id, employee_id, task_desc, task_deadline, task_status, task_result
 - Комментарий (comment) : (comment_id, object_type, object_id, employee_id, comment_text, created_at)
-- Журнал действий ( activity_logs ):  log_id, company_id, user_id, username, role, action_type, object_type, object_id, object_name, status, message
-- Отзыв клиента ( client_review ) : client_id, deal_id, creation_date, rating, text
+- Журнал действий ( activity_logs ):  log_id, user_id, username, role, action_type, object_type, object_id, object_name, status, message
+- Отзыв клиента ( client_review ) :  deal_id, creation_date, rating, text
 - Тэги (tags) : tag_id, tag_name, tag_desc
-- Сообщения по почте ( email_message ) : email_id, company_id, client_id, deal_id, direction, subject, body, sent_at
-- Логи звонков ( call_logs ): call_id, company_id, client_id, deal_id, direction, phone, duration, call_at
-- Сообщения в чатах (chat_messages) : message_id, company_id, client_id, deal_id, channel, sender_type, sender_id, body, sent_at
+- Сообщения по почте ( email_message ) : email_id, deal_id, direction, subject, body, sent_at
+- Логи звонков ( call_logs ): call_id, deal_id, direction, phone, duration, call_at
+- Сообщения в чатах (chat_messages) : message_id, deal_id, channel, sender_type, sender_id, body, sent_at
 
 ### Связи и их кардинальность
 
