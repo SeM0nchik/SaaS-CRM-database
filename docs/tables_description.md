@@ -34,8 +34,8 @@
 **Атрибуты:**
 - employee_id (PK)
 - company_id (FK)
-- employee_name
-- employee_email
+- employee_name NN
+- employee_email UNIQUE (корпоративный email у всех разный)
 - registration_date
 - role
 
@@ -55,9 +55,9 @@
 **Атрибуты:**
 - client_id (PK)
 - company_id (FK)
-- client_name
-- client_email
-- client_phone
+- client_name NN
+- client_email NN
+- client_phone NN
 - client_post
 
 **Функциональные зависимости:**
@@ -76,15 +76,16 @@
 **Атрибуты:**
 - deal_id (PK)
 - client_id (FK)
-- deal_name
+- manager_id (FK)
+- deal_name NN
 - deal_desc
 - amount
-- deal_status
+- deal_status NN
 - creation_date
 - close_date
 
 **Функциональные зависимости:**
-- deal_id → client_id, deal_name, deal_desc, amount, deal_status, creation_date, close_date
+- deal_id → client_id, manager_id, deal_name, deal_desc, amount, deal_status, creation_date, close_date
 
 **Нормализация:**  
 В 3НФ: отсутствуют транзитивные зависимости
@@ -99,9 +100,9 @@
 **Атрибуты:**
 - product_id (PK)
 - company_id (FK)
-- product_name
+- product_name NN
 - product_desc
-- product_price
+- product_price CHECK > 0
 
 **Функциональные зависимости:**
 - product_id → company_id, product_name, product_desc, product_price
@@ -121,8 +122,8 @@
 - deal_id (FK)
 - employee_id (FK)
 - task_desc
-- task_deadline
-- task_status
+- task_deadline NN
+- task_status NN
 - task_result
 
 **Функциональные зависимости:**
@@ -141,14 +142,14 @@
 **Атрибуты:**
 - message_id (PK)
 - deal_id (FK)
+- employee_id (FK)
+- direction NN
 - channel
-- sender_type
-- sender_id
 - body
 - sent_at
 
 **Функциональные зависимости:**
-- message_id → deal_id, channel, sender_type, sender_id, body, sent_at
+- message_id → deal_id, employee_id,  channel, sender_type, sender_id, body, sent_at
 
 
 **Нормализация:**  
@@ -164,6 +165,7 @@
 **Атрибуты:**
 - email_id (PK)
 - deal_id (FK)
+- employee_id (FK)
 - direction
 - subject
 - body
@@ -185,13 +187,14 @@
 **Атрибуты:**
 - call_id (PK)
 - deal_id (FK)
-- direction
-- phone
-- duration
+- employee_id (FK)
+- direction NN
+- phone NN
+- duration NN
 - call_at
 
 **Функциональные зависимости:**
-- call_id → company_id, client_id, deal_id, direction, phone, duration, call_at
+- call_id → company_id,employee_id, client_id, deal_id, direction, phone, duration, call_at
 
 **Нормализация:**  
 В 3НФ,  отсуттствуют транзитивные зависимости
@@ -205,14 +208,14 @@
 
 **Атрибуты:**
 - comment_id (PK)
-- object_type
-- object_id
+- parent_comment_id (FK)
 - employee_id (FK)
+- task_id(FK)
 - comment_text
 - created_at
 
 **Функциональные зависимости:**
-- comment_id → object_type, object_id, employee_id, comment_text, created_at
+- comment_id → task_id, parent_comment_id, employee_id, comment_text, created_at
 
 **Нормализация:**  
 В 3НФ,  отсутствуют транзитивные зависимости
@@ -227,17 +230,14 @@
 **Атрибуты:**
 - log_id (PK)
 - user_id (FK)
-- username
-- role
 - action_type
 - object_type
 - object_id
-- object_name
 - status
 - message
 
 **Функциональные зависимости:**
-- log_id → user_id, username, role, action_type, object_type, object_id, object_name, status, message
+- log_id → user_id, , action_type, object_type, object_id, status, message
 
 **Нормализация:**  
 В 3НФ, отсутствуют транзитивные зависимости
@@ -252,7 +252,7 @@
 **Атрибуты:**
 - review_id (PK)
 - deal_id (FK)
-- rating
+- rating ( от 0 до 5)
 - message
 
 **Функциональные зависимости:**
@@ -307,8 +307,8 @@
 **Атрибуты:**
 - deal_id (FK)
 - product_id (FK)
-- count
-- price
+- count NN
+- price NN
 
 **Функциональные зависимости:**  
 - (deal_id, product_id) → count, price
