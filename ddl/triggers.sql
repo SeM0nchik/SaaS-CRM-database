@@ -48,7 +48,7 @@ BEGIN
                      'INSERT',
                      'client',
                      NEW.client_id,
-                     'Successful operation'
+                     'Successful operation',
                          'client created'
                  );
         RETURN NEW;
@@ -153,7 +153,7 @@ BEGIN
                      'INSERT',
                      'employee',
                      NEW.employee_id,
-                     'Successful operation'
+                     'Successful operation',
                          'employee created'
                  );
         RETURN NEW;
@@ -272,7 +272,7 @@ BEGIN
          'INSERT',
          'deal',
          NEW.deal_id,
-         'Successful operation'
+         'Successful operation',
          'Deal created'
         );
         RETURN NEW;
@@ -789,7 +789,7 @@ BEGIN
                  v_user_id,
                  'INSERT',
                  'deal tags',
-                 OLD.deal_id || OLD.tag_id,
+                 NEW.deal_id * 1000000 +  NEW.tag_id,
                  'Successful operation',
                 'deal tag inserted'
                  );
@@ -807,7 +807,7 @@ BEGIN
                      v_user_id,
                      'DELETE',
                      'deal tags',
-                     OLD.deal_id || OLD.tag_id,
+                     NEW.deal_id * 1000000 +  NEW.tag_id,
                      'Successful operation',
                      'deal tag deleted'
                  );
@@ -907,7 +907,7 @@ BEGIN
                      v_user_id,
                      'DELETE',
                      'product_by_deal',
-                     OLD.deal_id,
+                     NEW.deal_id,
                      'Successful operation',
                      format(
                              'product_by_deal deleted: deal_id=%s, product_id=%s, count=%s, price=%s',
