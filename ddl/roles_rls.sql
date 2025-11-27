@@ -1,0 +1,23 @@
+CREATE ROLE crm_admin NOLOGIN;
+CREATE ROLE crm_user NOLOGIN;
+CREATE ROLE crm_readonly NOLOGIN;
+
+GRANT USAGE ON SCHEMA saas_crm TO crm_user, crm_admin, crm_readonly;
+
+GRANT SELECT, INSERT, UPDATE, DELETE
+    ON ALL TABLES IN SCHEMA saas_crm
+    TO crm_admin;
+
+GRANT SELECT, INSERT, UPDATE, DELETE
+    ON ALL TABLES IN SCHEMA saas_crm
+    TO crm_user;
+
+GRANT SELECT
+    ON ALL TABLES IN SCHEMA saas_crm
+    TO crm_readonly;
+
+ALTER DEFAULT PRIVILEGES IN SCHEMA saas_crm
+    GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO crm_admin, crm_user;
+
+ALTER DEFAULT PRIVILEGES IN SCHEMA saas_crm
+    GRANT SELECT ON TABLES TO crm_readonly;
