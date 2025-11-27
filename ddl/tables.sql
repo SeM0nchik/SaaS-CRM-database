@@ -196,7 +196,9 @@ CREATE TABLE deal_by_tag (
     REFERENCES deal(deal_id) ON DELETE CASCADE,
 
     CONSTRAINT fk_tag FOREIGN KEY (tag_id)
-    REFERENCES tags(tag_id) ON DELETE CASCADE
+    REFERENCES tags(tag_id) ON DELETE CASCADE,
+
+    CONSTRAINT pk_tag_by_deal PRIMARY KEY (deal_id, tag_id)
 );
 
 CREATE TABLE product_by_deal (
@@ -209,5 +211,8 @@ CREATE TABLE product_by_deal (
     REFERENCES deal(deal_id) ON DELETE CASCADE,
 
     CONSTRAINT fk_product FOREIGN KEY (product_id)
-    REFERENCES product(product_id) ON DELETE SET NULL
-)
+    REFERENCES product(product_id) ON DELETE SET NULL,
+
+
+    CONSTRAINT pk_product_by_deal PRIMARY KEY (deal_id, product_id)
+);
