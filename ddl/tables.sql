@@ -76,6 +76,7 @@ CREATE TABLE task (
     task_id SERIAL PRIMARY KEY,
     deal_id INT NOT NULL,
     employee_id INT NOT NULL,
+    task_name VARCHAR NOT NULL,
     task_desc TEXT,
     task_deadline TIMESTAMP NOT NULL ,
     task_status task_status NOT NULL ,
@@ -164,7 +165,6 @@ CREATE TABLE activity_logs (
     action_type VARCHAR,
     object_type VARCHAR,
     object_id INT NOT NULL,
-    object_name VARCHAR,
     status VARCHAR NOT NULL ,
     message TEXT,
 
