@@ -237,7 +237,7 @@
 - message
 
 **Функциональные зависимости:**
-- log_id → user_id, , action_type, object_type, object_id, status, message
+- log_id → user_id, action_type, object_type, object_id, status, message
 
 **Нормализация:**  
 В 3НФ, отсутствуют транзитивные зависимости
