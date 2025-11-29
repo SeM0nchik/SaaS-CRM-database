@@ -1,3 +1,4 @@
+BEGIN;
 --Добавим информацию о скрипте миграции
 INSERT INTO schema_migrations(name)
 VALUES ('add task status change triggers');
@@ -21,4 +22,4 @@ CREATE TRIGGER trg_change_task_status
     BEFORE INSERT OR UPDATE ON saas_crm.task
     FOR EACH ROW
 EXECUTE FUNCTION change_task_status();
-
+COMMIT;
