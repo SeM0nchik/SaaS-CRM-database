@@ -1,3 +1,4 @@
+BEGIN;
 SET search_path TO saas_crm;
 INSERT INTO employee (company_id, employee_full_name, employee_email, role)
 VALUES
@@ -7,3 +8,4 @@ VALUES
     (4, 'Анна Админ',     'anna.admin@techsupport.ru',   'admin'),
     (4, 'Олег Менеджер',  'oleg.manager@techsupport.ru', 'manager'),
     (4, 'Сергей Сотрудник','sergey.employee@techsupport.ru','employee');
+COMMIT;
