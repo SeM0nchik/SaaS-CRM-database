@@ -1,3 +1,4 @@
+BEGIN;
 SET search_path TO saas_crm;
 INSERT INTO tags (tag_name, tag_desc)
 VALUES
@@ -5,3 +6,4 @@ VALUES
     ('upsell',        'Потенциал допродаж'),
     ('trial',         'Тестовый период'),
     ('key_client',    'Ключевой клиент');
+COMMIT;
